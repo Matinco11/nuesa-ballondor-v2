@@ -488,19 +488,19 @@ RESPONSIVE
     </ul>
     <div class="nav-right">
       <div id="admin-pill" class="admin-pill" style="display:none">🔐 ADMIN
-        <button class="btn-nav btn-nav-red btn-sm" onclick="doLogout()" style="margin-left:.3rem">Logout</button>
+        <button class="btn-nav btn-nav-red btn-sm" onclick="window.doLogout()" style="margin-left:.3rem">Logout</button>
       </div>
-      <button class="btn-nav" id="btn-admin-open" onclick="openOverlay('ov-login')">🔐 Admin</button>
-      <button class="hamburger" id="hamburger" onclick="toggleMobMenu()">
+      <button class="btn-nav" id="btn-admin-open" onclick="window.openOverlay('ov-login')">🔐 Admin</button>
+      <button class="hamburger" id="hamburger" onclick="window.toggleMobMenu()">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
   <div class="nav-mob-menu" id="mob-menu">
-    <div class="nav-mob-a active" data-tab="leaderboard" onclick="switchTab('leaderboard');closeMobMenu()">Leaderboard</div>
-    <div class="nav-mob-a" data-tab="matches" onclick="switchTab('matches');closeMobMenu()">Matches</div>
-    <div class="nav-mob-a" data-tab="players" onclick="switchTab('players');closeMobMenu()">Players</div>
-    <div class="nav-mob-a" data-tab="standings" onclick="switchTab('standings');closeMobMenu()">Standings</div>
+    <div class="nav-mob-a active" data-tab="leaderboard" onclick="window.switchTab('leaderboard');closeMobMenu()">Leaderboard</div>
+    <div class="nav-mob-a" data-tab="matches" onclick="window.switchTab('matches');closeMobMenu()">Matches</div>
+    <div class="nav-mob-a" data-tab="players" onclick="window.switchTab('players');closeMobMenu()">Players</div>
+    <div class="nav-mob-a" data-tab="standings" onclick="window.switchTab('standings');closeMobMenu()">Standings</div>
   </div>
 </nav>
 
@@ -545,7 +545,7 @@ RESPONSIVE
   <div class="tab-panel" id="tab-matches">
     <div class="sec-hdr-row">
       <div><div class="section-lbl">// Fixtures & Results</div><h2 class="section-ttl">Match <span>Centre</span></h2></div>
-      <button class="btn btn-gold" id="btn-log-match" style="display:none" onclick="openMatchForm()">+ Log Match</button>
+      <button class="btn btn-gold" id="btn-log-match" style="display:none" onclick="window.openMatchForm()">+ Log Match</button>
     </div>
     <div class="filter-bar" style="margin-bottom:1.2rem;" id="match-filter-bar">
       <button class="fbtn active" data-comp="All">All</button>
@@ -557,7 +557,7 @@ RESPONSIVE
       <button class="fbtn" data-comp="Harmony Cup">Harmony</button>
       <button class="fbtn" data-comp="Deans Cup">Dean's</button>
       <div class="hod-wrap">
-        <button class="fbtn" id="hod-btn" onclick="toggleHodMenu()">HOD Cup ▾</button>
+        <button class="fbtn" id="hod-btn" onclick="window.toggleHodMenu()">HOD Cup ▾</button>
         <div class="hod-menu" id="hod-menu"></div>
       </div>
     </div>
@@ -569,7 +569,7 @@ RESPONSIVE
   <div class="tab-panel" id="tab-players">
     <div class="sec-hdr-row">
       <div><div class="section-lbl">// Player Database</div><h2 class="section-ttl">Player <span>Profiles</span></h2></div>
-      <button class="btn btn-gold" id="btn-reg-player" style="display:none" onclick="openOverlay('ov-player')">+ Register Player</button>
+      <button class="btn btn-gold" id="btn-reg-player" style="display:none" onclick="window.openOverlay('ov-player')">+ Register Player</button>
     </div>
     <div style="display:flex;gap:.65rem;align-items:center;margin-bottom:1.4rem;flex-wrap:wrap;">
       <div class="search-box">
@@ -608,13 +608,13 @@ RESPONSIVE
 
 <div class="overlay" id="ov-login">
   <div class="modal modal-sm">
-    <div class="mhdr"><div class="mttl">🔐 Admin Login</div><button class="mclose" onclick="closeOverlay('ov-login')">✕</button></div>
+    <div class="mhdr"><div class="mttl">🔐 Admin Login</div><button class="mclose" onclick="window.closeOverlay('ov-login')">✕</button></div>
     <div class="mbody">
       <div class="fgrp" style="margin-bottom:.85rem;"><label class="flbl">Username</label><input class="finput" id="a-user" placeholder="Username" autocomplete="off"></div>
       <div class="fgrp"><label class="flbl">Password</label><input class="finput" type="password" id="a-pass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
       <p id="a-err" style="color:var(--red);font-size:.8rem;margin-top:.6rem;display:none;">Incorrect credentials. Try again.</p>
     </div>
-    <div class="mftr"><button class="btn btn-ghost" onclick="closeOverlay('ov-login')">Cancel</button><button class="btn btn-solid-gold" onclick="doLogin()">Login</button></div>
+    <div class="mftr"><button class="btn btn-ghost" onclick="window.closeOverlay('ov-login')">Cancel</button><button class="btn btn-solid-gold" onclick="window.doLogin()">Login</button></div>
   </div>
 </div>
 
@@ -622,7 +622,7 @@ RESPONSIVE
 
 <div class="overlay" id="ov-match">
   <div class="modal modal-lg">
-    <div class="mhdr"><div class="mttl">Log Match Result</div><button class="mclose" onclick="closeOverlay('ov-match')">✕</button></div>
+    <div class="mhdr"><div class="mttl">Log Match Result</div><button class="mclose" onclick="window.closeOverlay('ov-match')">✕</button></div>
     <div class="mbody">
       <div class="form-grid">
         <div class="fgrp"><label class="flbl">Home Department</label><select class="fselect" id="m-home"></select></div>
@@ -673,7 +673,7 @@ RESPONSIVE
       <div class="fdiv"></div>
       <div class="fsub-ttl">⚽ Goal Scorers & Assists</div>
       <div id="scorers-list"></div>
-      <button class="btn-add-row" onclick="addScorerRow()">+ Add Scorer / Assist</button>
+      <button class="btn-add-row" onclick="window.addScorerRow()">+ Add Scorer / Assist</button>
       <div class="fdiv"></div>
       <div class="fsub-ttl">📋 Home Lineup</div>
       <div class="form-grid" style="margin-bottom:.7rem;">
@@ -681,7 +681,7 @@ RESPONSIVE
         <div class="fgrp"><label class="flbl">Coach</label><input type="text" class="finput" id="m-hcoach" placeholder="Coach name"></div>
       </div>
       <div id="home-lineup-list"></div>
-      <button class="btn-add-row" onclick="addLineupRow('home')">+ Add Home Player</button>
+      <button class="btn-add-row" onclick="window.addLineupRow('home')">+ Add Home Player</button>
       <div class="fdiv"></div>
       <div class="fsub-ttl">📋 Away Lineup</div>
       <div class="form-grid" style="margin-bottom:.7rem;">
@@ -689,15 +689,15 @@ RESPONSIVE
         <div class="fgrp"><label class="flbl">Coach</label><input type="text" class="finput" id="m-acoach" placeholder="Coach name"></div>
       </div>
       <div id="away-lineup-list"></div>
-      <button class="btn-add-row" onclick="addLineupRow('away')">+ Add Away Player</button>
+      <button class="btn-add-row" onclick="window.addLineupRow('away')">+ Add Away Player</button>
       <div class="fdiv"></div>
       <div class="fsub-ttl">🔄 Substitutes</div>
       <div id="subs-list"></div>
-      <button class="btn-add-row" onclick="addSubRow()">+ Add Substitute</button>
+      <button class="btn-add-row" onclick="window.addSubRow()">+ Add Substitute</button>
     </div>
     <div class="mftr">
-      <button class="btn btn-ghost" onclick="closeOverlay('ov-match')">Cancel</button>
-      <button class="btn btn-solid-gold" onclick="submitMatch()">Save Match</button>
+      <button class="btn btn-ghost" onclick="window.closeOverlay('ov-match')">Cancel</button>
+      <button class="btn btn-solid-gold" onclick="window.submitMatch()">Save Match</button>
     </div>
   </div>
 </div>
@@ -706,7 +706,7 @@ RESPONSIVE
 
 <div class="overlay" id="ov-detail">
   <div class="modal modal-xl">
-    <div class="mhdr"><div class="mttl" id="detail-title">Match Details</div><button class="mclose" onclick="closeOverlay('ov-detail')">✕</button></div>
+    <div class="mhdr"><div class="mttl" id="detail-title">Match Details</div><button class="mclose" onclick="window.closeOverlay('ov-detail')">✕</button></div>
     <div id="detail-body"></div>
   </div>
 </div>
@@ -715,11 +715,11 @@ RESPONSIVE
 
 <div class="overlay" id="ov-live">
   <div class="modal modal-lg">
-    <div class="mhdr"><div class="mttl">🔴 Live Match Control</div><button class="mclose" onclick="closeLive()">✕</button></div>
+    <div class="mhdr"><div class="mttl">🔴 Live Match Control</div><button class="mclose" onclick="window.closeLive()">✕</button></div>
     <div class="mbody" id="live-body"></div>
     <div class="mftr">
-      <button class="btn btn-ghost" onclick="closeLive()">Close</button>
-      <button class="btn btn-solid-gold" onclick="finalizeMatch()">Finalize & Save</button>
+      <button class="btn btn-ghost" onclick="window.closeLive()">Close</button>
+      <button class="btn btn-solid-gold" onclick="window.finalizeMatch()">Finalize & Save</button>
     </div>
   </div>
 </div>
@@ -728,7 +728,7 @@ RESPONSIVE
 
 <div class="overlay" id="ov-player">
   <div class="modal modal-md">
-    <div class="mhdr"><div class="mttl">Register Player</div><button class="mclose" onclick="closeOverlay('ov-player')">✕</button></div>
+    <div class="mhdr"><div class="mttl">Register Player</div><button class="mclose" onclick="window.closeOverlay('ov-player')">✕</button></div>
     <div class="mbody">
       <div class="fgrp form-full" style="margin-bottom:1rem;">
         <label class="flbl">Player Photo</label>
@@ -758,8 +758,8 @@ RESPONSIVE
       </div>
     </div>
     <div class="mftr">
-      <button class="btn btn-ghost" onclick="closeOverlay('ov-player')">Cancel</button>
-      <button class="btn btn-solid-gold" onclick="submitPlayer()">Register Player</button>
+      <button class="btn btn-ghost" onclick="window.closeOverlay('ov-player')">Cancel</button>
+      <button class="btn btn-solid-gold" onclick="window.submitPlayer()">Register Player</button>
     </div>
   </div>
 </div>
@@ -768,14 +768,14 @@ RESPONSIVE
 
 <div class="overlay" id="ov-rating">
   <div class="modal modal-lg">
-    <div class="mhdr"><div class="mttl">⭐ Rate the Players (1–10)</div><button class="mclose" onclick="closeOverlay('ov-rating')">✕</button></div>
+    <div class="mhdr"><div class="mttl">⭐ Rate the Players (1–10)</div><button class="mclose" onclick="window.closeOverlay('ov-rating')">✕</button></div>
     <div class="mbody">
       <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;">Rate each player based on their performance in this match.</p>
       <div class="rate-list" id="rate-list"></div>
     </div>
     <div class="mftr">
-      <button class="btn btn-ghost" onclick="closeOverlay('ov-rating')">Cancel</button>
-      <button class="btn btn-solid-gold" onclick="submitRatings()">Submit Ratings</button>
+      <button class="btn btn-ghost" onclick="window.closeOverlay('ov-rating')">Cancel</button>
+      <button class="btn btn-solid-gold" onclick="window.submitRatings()">Submit Ratings</button>
     </div>
   </div>
 </div>
@@ -1002,10 +1002,8 @@ function doLogin() {
   const p = D("a-pass").value;
   if(u===ADMIN_USER && p===ADMIN_PASS) {
     isAdmin = true;
-    D("admin-pill").style.display = "flex";
-    D("btn-admin-open").style.display = "none";
-    D("btn-log-match").style.display = "flex";
-    D("btn-reg-player").style.display = "flex";
+    sessionStorage.setItem("nuesa_admin", "true");
+    applyAdminUI();
     closeOverlay("ov-login");
     D("a-user").value=""; D("a-pass").value="";
     D("a-err").style.display="none";
@@ -1018,12 +1016,22 @@ function doLogin() {
 
 function doLogout() {
   isAdmin=false;
+  sessionStorage.removeItem("nuesa_admin");
   D("admin-pill").style.display="none";
   D("btn-admin-open").style.display="block";
   D("btn-log-match").style.display="none";
   D("btn-reg-player").style.display="none";
   toast("Logged out","Admin mode disabled.");
   renderAll();
+}
+
+function applyAdminUI() {
+  D("admin-pill").style.display = "flex";
+  D("btn-admin-open").style.display = "none";
+  D("btn-log-match").style.removeProperty("display");
+  D("btn-log-match").style.display = "flex";
+  D("btn-reg-player").style.removeProperty("display");
+  D("btn-reg-player").style.display = "flex";
 }
 
 // ════════════════════════════════════════════════
@@ -1033,9 +1041,20 @@ function uploadLogo(e) {
   const file=e.target.files[0]; if(!file) return;
   const r=new FileReader();
   r.onload=ev=>{
-    D("logo-slot").innerHTML=`<img src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Logo">`;
+    const dataUrl = ev.target.result;
+    localStorage.setItem("nuesa_logo", dataUrl);
+    applyLogo(dataUrl);
   };
   r.readAsDataURL(file);
+}
+
+function applyLogo(dataUrl) {
+  D("logo-slot").innerHTML=`<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Logo">`;
+}
+
+function restoreLogo() {
+  const saved = localStorage.getItem("nuesa_logo");
+  if(saved) applyLogo(saved);
 }
 
 // ════════════════════════════════════════════════
@@ -1085,7 +1104,7 @@ function renderLeaderboard() {
   // dept filter bar
   const fb = D("dept-filter-bar");
   const depts = ["All",...DEPTS.map(d=>d.abbr)];
-  fb.innerHTML = depts.map(d=>`<button class="fbtn ${d===lbDeptFilter?"active":""}" onclick="lbDeptFilter='${d}';renderLeaderboard()">${d}</button>`).join("");
+  fb.innerHTML = depts.map(d=>`<button class="fbtn ${d===lbDeptFilter?"active":""}" onclick="window.lbDeptFilter='${d}';window.renderLeaderboard()">${d}</button>`).join("");
 
   const q = (D("lb-search").value||"").toLowerCase();
   let rows = players.filter(p=>{
@@ -1108,7 +1127,7 @@ function renderLeaderboard() {
     const rPct=ar?((parseFloat(ar)-1)/9*100).toFixed(0):0;
     const fDots=(p.form||[]).map(f=>`<div class="fd ${f.toLowerCase()}"></div>`).join("");
     const av=p.photo?`<img src="${p.photo}" alt="">`:`<span style="color:${dept.color}">${initials(p.name)}</span>`;
-    return `<tr onclick="openDetail(${p.id},'player')">
+    return `<tr onclick="window.openDetail(${p.id},'player')">
       <td class="td-rank ${i<3?"top":""}">${i+1}</td>
       <td><div class="td-player"><div class="av-sm">${av}</div>
         <div><div class="p-name">${p.name}</div><div class="p-sub">${dept.name}</div></div>
@@ -1133,7 +1152,7 @@ function renderLeaderboard() {
 // ════════════════════════════════════════════════
 function renderHodMenu() {
   const menu = D("hod-menu");
-  menu.innerHTML = DEPTS.map(d=>`<div class="hod-item ${hodFilterDept===d.abbr?"active":""}" onclick="selectHod('${d.abbr}')">${d.abbr} HOD Cup</div>`).join("");
+  menu.innerHTML = DEPTS.map(d=>`<div class="hod-item ${hodFilterDept===d.abbr?"active":""}" onclick="window.selectHod('${d.abbr}')">${d.abbr} HOD Cup</div>`).join("");
 }
 function toggleHodMenu(){ D("hod-menu").classList.toggle("open"); renderHodMenu(); }
 function selectHod(abbr){
@@ -1182,10 +1201,10 @@ function buildCard(m){
   const more=(m.scorers||[]).length>3?`<div style="font-size:.7rem;color:var(--muted)">+${m.scorers.length-3} more…</div>`:"";
   const motmHtml=m.motm?`<div class="motm-strip">⭐<span style="color:var(--muted);font-size:.72rem">MOTM</span><strong>${m.motm}</strong></div>`:"";
   const adminBar=isAdmin?`<div class="adm-card-bar">
-    ${isLive?`<button class="btn btn-green btn-sm" onclick="openLiveModal(${m.id});event.stopPropagation()">⏱ Live Panel</button>`
-    :`<button class="btn btn-gold btn-sm" onclick="openRatingModal(${m.id});event.stopPropagation()">⭐ Rate Players</button>`}
+    ${isLive?`<button class="btn btn-green btn-sm" onclick="window.openLiveModal(${m.id});event.stopPropagation()">⏱ Live Panel</button>`
+    :`<button class="btn btn-gold btn-sm" onclick="window.openRatingModal(${m.id});event.stopPropagation()">⭐ Rate Players</button>`}
   </div>`:"";
-  return `<div class="match-card" onclick="openMatchDetail(${m.id})">
+  return `<div class="match-card" onclick="window.openMatchDetail(${m.id})">
     <div class="mc-head">
       <span class="mc-comp">${m.comp}${m.group?" · Grp "+m.group:""}</span>
       <span class="mc-date">${fmtDate(m.date)}</span>
@@ -1492,10 +1511,10 @@ function renderLivePanel(){
         </div>
       </div>
       <div class="live-ctrl">
-        <button class="btn btn-green" id="btn-start-timer" onclick="startTimer()">▶ ${liveHalf===1?"Start Match":"Start 2nd Half"}</button>
-        <button class="btn btn-ghost" onclick="pauseTimer()">⏸ Pause</button>
-        <button class="btn btn-gold" onclick="halfTime()">🔔 Half Time</button>
-        <button class="btn btn-red" onclick="fullTime()">🏁 Full Time</button>
+        <button class="btn btn-green" id="btn-start-timer" onclick="window.startTimer()">▶ ${liveHalf===1?"Start Match":"Start 2nd Half"}</button>
+        <button class="btn btn-ghost" onclick="window.pauseTimer()">⏸ Pause</button>
+        <button class="btn btn-gold" onclick="window.halfTime()">🔔 Half Time</button>
+        <button class="btn btn-red" onclick="window.fullTime()">🏁 Full Time</button>
       </div>
     </div>
     <div class="fdiv"></div>
@@ -1509,7 +1528,7 @@ function renderLivePanel(){
           <option value="yellow">🟨 Yellow</option><option value="red">🟥 Red</option>
         </select></div>
     </div>
-    <button class="btn btn-solid-gold" style="width:100%" onclick="logLiveEvent()">Log Event (${formatTime(liveSecs)})</button>
+    <button class="btn btn-solid-gold" style="width:100%" onclick="window.logLiveEvent()">Log Event (${formatTime(liveSecs)})</button>
     <div class="fdiv"></div>
     <div class="fsub-ttl">Event Log</div>
     <div id="live-log">${(m.scorers||[]).map(s=>`<div class="sub-row-detail">
@@ -1690,7 +1709,7 @@ function submitPlayer(){
 function renderPlayers(){
   // dept filter bar
   const bar=D("player-dept-bar");
-  bar.innerHTML=["All",...DEPTS.map(d=>d.abbr)].map(d=>`<button class="fbtn ${d===playerDeptFilter?"active":""}" onclick="playerDeptFilter='${d}';renderPlayers()">${d}</button>`).join("");
+  bar.innerHTML=["All",...DEPTS.map(d=>d.abbr)].map(d=>`<button class="fbtn ${d===playerDeptFilter?"active":""}" onclick="window.playerDeptFilter='${d}';window.renderPlayers()">${d}</button>`).join("");
 
   const q=(D("player-search").value||"").toLowerCase();
   const filtered=players.filter(p=>{
@@ -1860,6 +1879,15 @@ function renderAll(){
 //  INIT
 // ════════════════════════════════════════════════
 document.addEventListener("DOMContentLoaded",()=>{
+  // ── Restore admin session if still active ──
+  if(sessionStorage.getItem("nuesa_admin")==="true"){
+    isAdmin = true;
+    applyAdminUI();
+  }
+
+  // ── Restore club logo ──
+  restoreLogo();
+
   // ── Show loading state while Firebase connects ──
   showLoadingState();
 
@@ -1931,14 +1959,19 @@ function showLoadingState(){
 //  HTML onclick="" attributes need window-level access.
 // ════════════════════════════════════════════════
 Object.assign(window, {
+  // State vars settable from onclick
+  get lbDeptFilter(){ return lbDeptFilter; },
+  set lbDeptFilter(v){ lbDeptFilter=v; },
+  get playerDeptFilter(){ return playerDeptFilter; },
+  set playerDeptFilter(v){ playerDeptFilter=v; },
   // Auth
-  doLogin, doLogout,
+  doLogin, doLogout, applyAdminUI,
   // Overlays
   openOverlay, closeOverlay,
   // Nav
   switchTab, toggleMobMenu, closeMobMenu,
-  // Hero
-  uploadLogo,
+  // Hero logo
+  uploadLogo, applyLogo, restoreLogo,
   // Admin buttons
   openMatchForm,
   // Match form rows
