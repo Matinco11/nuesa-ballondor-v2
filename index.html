@@ -487,10 +487,10 @@ RESPONSIVE
       <li><a class="nav-tab-a" data-tab="standings">Standings</a></li>
     </ul>
     <div class="nav-right">
-      <div id="admin-pill" class="admin-pill" style="display:none">🔐 ADMIN
-        <button class="btn-nav btn-nav-red btn-sm" onclick="window.doLogout()" style="margin-left:.3rem">Logout</button>
+      <div id="admin-pill" class="admin-pill" style="display:none">🔐
+        <button class="btn-nav btn-nav-red btn-sm" onclick="window.doLogout()" style="margin-left:.2rem;padding:.2rem .5rem;font-size:.65rem;">✕ Out</button>
       </div>
-      <button class="btn-nav" id="btn-admin-open" onclick="window.openOverlay('ov-login')">🔐 Admin</button>
+      <button class="btn-nav" id="btn-admin-open" onclick="window.openOverlay('ov-login')" style="font-size:.72rem;padding:.28rem .6rem;">🔐 Admin</button>
       <button class="hamburger" id="hamburger" onclick="window.toggleMobMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -1040,21 +1040,39 @@ function applyAdminUI() {
 function uploadLogo(e) {
   const file=e.target.files[0]; if(!file) return;
   const r=new FileReader();
-  r.onload=ev=>{
+  r.onload=async ev=>{
     const dataUrl = ev.target.result;
+    // Save to localStorage for instant local restore
     localStorage.setItem("nuesa_logo", dataUrl);
     applyLogo(dataUrl);
+    // Also save to Firebase so all devices see it
+    try {
+      await set(ref(db, "nuesa_logo"), dataUrl);
+      toast("Logo Saved!","Club logo updated for all viewers.");
+    } catch(e) {
+      toast("Logo saved locally","Could not sync to cloud.");
+    }
   };
   r.readAsDataURL(file);
 }
 
 function applyLogo(dataUrl) {
+  if(!dataUrl) return;
   D("logo-slot").innerHTML=`<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Logo">`;
 }
 
 function restoreLogo() {
-  const saved = localStorage.getItem("nuesa_logo");
-  if(saved) applyLogo(saved);
+  // First try localStorage (instant)
+  const local = localStorage.getItem("nuesa_logo");
+  if(local) applyLogo(local);
+  // Then sync from Firebase (for all devices)
+  onValue(ref(db, "nuesa_logo"), snapshot=>{
+    const dataUrl = snapshot.val();
+    if(dataUrl){
+      localStorage.setItem("nuesa_logo", dataUrl);
+      applyLogo(dataUrl);
+    }
+  }, { onlyOnce: false });
 }
 
 // ════════════════════════════════════════════════
