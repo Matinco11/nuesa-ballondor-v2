@@ -78,26 +78,41 @@ animation:fadeUp .8s .15s ease both,shimmer 5s 1s linear infinite;}
 NAV
 ============================================================ */
 nav{position:sticky;top:0;z-index:500;background:rgba(10,12,16,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(–border);}
-.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 1.2rem;gap:.5rem;}
-.nav-brand{font-family:‘Oswald’,sans-serif;font-size:1.1rem;font-weight:700;color:var(–gold);letter-spacing:.04em;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 1rem;gap:.4rem;}
+.nav-brand{font-family:‘Oswald’,sans-serif;font-size:1.05rem;font-weight:700;color:var(–gold);letter-spacing:.04em;text-decoration:none;white-space:nowrap;flex-shrink:0;}
 .nav-tabs{display:flex;list-style:none;flex-shrink:0;}
-.nav-tab-a{display:block;padding:0 .9rem;height:56px;line-height:56px;font-family:‘Barlow Condensed’,sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
+.nav-tab-a{display:block;padding:0 .85rem;height:56px;line-height:56px;font-family:‘Barlow Condensed’,sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
 .nav-tab-a:hover,.nav-tab-a.active{color:var(–gold);border-bottom-color:var(–gold);}
-.nav-right{display:flex;align-items:center;gap:.4rem;flex-shrink:0;}
-.admin-pill{display:flex;align-items:center;gap:.3rem;background:rgba(244,168,0,.1);border:1px solid rgba(244,168,0,.35);color:var(–gold);font-family:‘Space Mono’,monospace;font-size:.55rem;letter-spacing:.06em;padding:.22rem .5rem;border-radius:2px;white-space:nowrap;}
-.btn-nav{background:none;border:1px solid rgba(244,168,0,.35);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .6rem;border-radius:2px;transition:all .2s;white-space:nowrap;}
+.nav-right{display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.admin-pill{display:flex;align-items:center;gap:.25rem;background:rgba(244,168,0,.1);border:1px solid rgba(244,168,0,.35);color:var(–gold);font-family:‘Space Mono’,monospace;font-size:.52rem;letter-spacing:.05em;padding:.2rem .45rem;border-radius:2px;white-space:nowrap;}
+.btn-nav{background:none;border:1px solid rgba(244,168,0,.35);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.24rem .55rem;border-radius:2px;transition:all .2s;white-space:nowrap;cursor:pointer;}
 .btn-nav:hover{border-color:var(–gold);color:var(–gold);}
 .btn-nav-red{border-color:rgba(255,71,87,.35);color:var(–red);}
 .btn-nav-red:hover{background:rgba(255,71,87,.1);}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:5px;background:none;border:none;flex-shrink:0;}
-.hamburger span{display:block;width:22px;height:2px;background:var(–gold);transition:all .3s;border-radius:1px;}
-.nav-mob-menu{display:none;position:absolute;top:56px;left:0;right:0;background:var(–dark2);border-bottom:1px solid var(–border);z-index:490;flex-direction:column;}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;background:none;border:1px solid var(–border);border-radius:3px;flex-shrink:0;cursor:pointer;}
+.hamburger span{display:block;width:20px;height:2px;background:var(–gold);border-radius:1px;}
+/* ── Mobile dropdown — clean overlay ── */
+.nav-mob-menu{
+display:none;position:fixed;top:56px;left:0;right:0;bottom:0;
+background:rgba(10,12,16,.97);z-index:490;flex-direction:column;
+padding:1rem 0;overflow-y:auto;
+}
 .nav-mob-menu.open{display:flex;}
-.nav-mob-a{padding:.85rem 1.5rem;font-family:‘Barlow Condensed’,sans-serif;font-size:.9rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);border-bottom:1px solid var(–border2);cursor:pointer;transition:background .15s;}
-.nav-mob-a:hover,.nav-mob-a.active{color:var(–gold);background:rgba(244,168,0,.06);}
-/* Floating hamburger on hero for mobile */
-.hero-hamburger{position:absolute;top:1.2rem;right:1.2rem;z-index:10;display:none;flex-direction:column;gap:5px;padding:8px;background:rgba(10,12,16,.7);border:1px solid var(–border);border-radius:4px;cursor:pointer;backdrop-filter:blur(10px);}
-.hero-hamburger span{display:block;width:22px;height:2px;background:var(–gold);border-radius:1px;}
+.nav-mob-a{
+padding:1rem 1.5rem;font-family:‘Barlow Condensed’,sans-serif;
+font-size:1.1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+color:var(–muted);border-bottom:1px solid var(–border2);
+cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.7rem;
+}
+.nav-mob-a:hover,.nav-mob-a.active{color:var(–gold);background:rgba(244,168,0,.05);padding-left:1.8rem;}
+.nav-mob-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(244,168,0,.3),transparent);margin:.5rem 1rem;}
+.nav-mob-label{padding:.6rem 1.5rem;font-family:‘Space Mono’,monospace;font-size:.55rem;letter-spacing:.2em;color:var(–muted);text-transform:uppercase;}
+/* ── Floating hamburger on hero ── */
+.hero-hamburger{position:absolute;top:1rem;right:1rem;z-index:10;display:none;flex-direction:column;gap:5px;padding:8px 9px;background:rgba(10,12,16,.8);border:1px solid rgba(244,168,0,.3);border-radius:4px;cursor:pointer;backdrop-filter:blur(10px);}
+.hero-hamburger span{display:block;width:20px;height:2px;background:var(–gold);border-radius:1px;}
+/* ── Back button ── */
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;background:none;border:1px solid var(–border);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:3px;cursor:pointer;transition:all .2s;margin-bottom:1.4rem;}
+.back-btn:hover{border-color:var(–gold);color:var(–gold);}
 
 /* ============================================================
 MAIN LAYOUT
@@ -408,7 +423,13 @@ footer{border-top:1px solid var(–border);padding:2rem 1.5rem;text-align:center
 .ft-copy{font-size:.65rem;color:rgba(136,146,170,.5);margin-top:.6rem;font-family:‘Space Mono’,monospace;}
 
 /* ============================================================
-HOD DROPDOWN
+BACK BUTTON
+============================================================ */
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;background:none;border:1px solid var(–border);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.38rem .85rem;border-radius:3px;cursor:pointer;margin-bottom:1.2rem;transition:all .2s;}
+.back-btn:hover{border-color:var(–gold);color:var(–gold);}
+
+/* ============================================================
+MOBILE NAV DROPDOWN — clean overlay style
 ============================================================ */
 .hod-wrap{position:relative;}
 .hod-menu{position:absolute;top:100%;left:0;background:var(–dark2);border:1px solid var(–border);border-radius:3px;z-index:60;min-width:210px;max-height:240px;overflow-y:auto;display:none;box-shadow:0 8px 28px rgba(0,0,0,.5);}
@@ -436,12 +457,11 @@ RESPONSIVE
 .md-score-big{font-size:2rem;}
 .dtab{font-size:.68rem;padding:.55rem .25rem;}
 .hide-mob{display:none;}
-.search-box input{width:120px;}
+.search-box input{width:110px;}
 .hero-counters{gap:1.2rem;}
 .lineup-grid{grid-template-columns:1fr;}
-.nav-brand{font-size:.95rem;}
-.btn-nav{font-size:.65rem;padding:.22rem .45rem;}
-.admin-pill{font-size:.5rem;padding:.18rem .4rem;}
+.nav-brand{font-size:.9rem;}
+.btn-nav{font-size:.62rem;padding:.2rem .4rem;}
 }
 @media(max-width:480px){
 .main{padding:1.5rem .9rem 2.5rem;}
@@ -490,7 +510,7 @@ RESPONSIVE
 
 <nav id="main-nav">
   <div class="nav-inner">
-    <a class="nav-brand" href="#home">NUESA Ballon d'Or</a>
+    <a class="nav-brand" href="#" onclick="window.scrollToHero()">NUESA Ballon d'Or</a>
     <ul class="nav-tabs" id="desk-tabs">
       <li><a class="nav-tab-a active" data-tab="leaderboard">Leaderboard</a></li>
       <li><a class="nav-tab-a" data-tab="matches">Matches</a></li>
@@ -499,20 +519,34 @@ RESPONSIVE
     </ul>
     <div class="nav-right">
       <div id="admin-pill" class="admin-pill" style="display:none">
-        🔐
-        <button class="btn-nav btn-nav-red" onclick="window.doLogout()" style="padding:.18rem .45rem;font-size:.62rem;margin-left:.2rem;">✕ Logout</button>
+        🔐 <span style="display:none" class="hide-mob-text">ADMIN</span>
+        <button class="btn-nav btn-nav-red" onclick="window.doLogout()" style="padding:.18rem .4rem;font-size:.6rem;margin-left:.2rem;">✕</button>
       </div>
       <button class="btn-nav" id="btn-admin-open" onclick="window.openOverlay('ov-login')">🔐 Admin</button>
-      <button class="hamburger" id="hamburger" onclick="window.toggleMobMenu()">
+      <button class="hamburger" id="hamburger" onclick="window.toggleMobMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
+  <!-- Mobile full-screen menu -->
   <div class="nav-mob-menu" id="mob-menu">
-    <div class="nav-mob-a active" data-tab="leaderboard" onclick="window.switchTab('leaderboard');closeMobMenu()">Leaderboard</div>
-    <div class="nav-mob-a" data-tab="matches" onclick="window.switchTab('matches');closeMobMenu()">Matches</div>
-    <div class="nav-mob-a" data-tab="players" onclick="window.switchTab('players');closeMobMenu()">Players</div>
-    <div class="nav-mob-a" data-tab="standings" onclick="window.switchTab('standings');closeMobMenu()">Standings</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;border-bottom:1px solid var(--border);margin-bottom:.4rem;">
+      <span style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:var(--gold);">NUESA Ballon d'Or</span>
+      <button onclick="window.closeMobMenu()" style="background:none;border:1px solid var(--border);color:var(--muted);padding:.3rem .6rem;border-radius:3px;font-size:.9rem;cursor:pointer;">✕ Close</button>
+    </div>
+    <div class="nav-mob-a active" data-tab="leaderboard" onclick="window.switchTab('leaderboard');window.closeMobMenu()">🏆 Leaderboard</div>
+    <div class="nav-mob-a" data-tab="matches" onclick="window.switchTab('matches');window.closeMobMenu()">⚽ Match Centre</div>
+    <div class="nav-mob-a" data-tab="players" onclick="window.switchTab('players');window.closeMobMenu()">👤 Players</div>
+    <div class="nav-mob-a" data-tab="standings" onclick="window.switchTab('standings');window.closeMobMenu()">📊 Standings</div>
+    <!-- Admin-only section — shown after login -->
+    <div id="mob-admin-section" style="display:none;">
+      <div class="nav-mob-divider"></div>
+      <div class="nav-mob-label">Admin Controls</div>
+      <div class="nav-mob-a" onclick="window.switchTab('matches');window.openMatchForm();window.closeMobMenu()" style="color:var(--gold)">⚽ Log Match Result</div>
+      <div class="nav-mob-a" onclick="window.switchTab('players');window.openOverlay('ov-player');window.closeMobMenu()" style="color:var(--gold)">👤 Register Player</div>
+      <div class="nav-mob-divider"></div>
+      <div class="nav-mob-a" onclick="window.doLogout();window.closeMobMenu()" style="color:var(--red)">✕ Logout Admin</div>
+    </div>
   </div>
 </nav>
 
@@ -523,6 +557,7 @@ RESPONSIVE
   <!-- ─── LEADERBOARD ─── -->
 
   <div class="tab-panel active" id="tab-leaderboard">
+    <button class="back-btn" onclick="window.scrollToHero()">← Home</button>
     <div class="sec-hdr"><div class="section-lbl">// Season 2025</div><h2 class="section-ttl">Golden Boot <span>Standings</span></h2></div>
     <div class="podium-row" id="podium"></div>
     <div class="tbl-wrap">
@@ -555,6 +590,7 @@ RESPONSIVE
   <!-- ─── MATCHES ─── -->
 
   <div class="tab-panel" id="tab-matches">
+    <button class="back-btn" onclick="window.scrollToHero()">← Home</button>
     <div class="sec-hdr-row">
       <div><div class="section-lbl">// Fixtures & Results</div><h2 class="section-ttl">Match <span>Centre</span></h2></div>
       <button class="btn btn-gold" id="btn-log-match" style="display:none" onclick="window.openMatchForm()">+ Log Match</button>
@@ -579,6 +615,7 @@ RESPONSIVE
   <!-- ─── PLAYERS ─── -->
 
   <div class="tab-panel" id="tab-players">
+    <button class="back-btn" onclick="window.scrollToHero()">← Home</button>
     <div class="sec-hdr-row">
       <div><div class="section-lbl">// Player Database</div><h2 class="section-ttl">Player <span>Profiles</span></h2></div>
       <button class="btn btn-gold" id="btn-reg-player" style="display:none" onclick="window.openOverlay('ov-player')">+ Register Player</button>
@@ -596,6 +633,7 @@ RESPONSIVE
   <!-- ─── STANDINGS ─── -->
 
   <div class="tab-panel" id="tab-standings">
+    <button class="back-btn" onclick="window.scrollToHero()">← Home</button>
     <div class="sec-hdr"><div class="section-lbl">// Competition Tables</div><h2 class="section-ttl">Department <span>Standings</span></h2></div>
     <div class="comp-selector">
       <select class="finput" id="std-comp" onchange="renderStandings()" style="max-width:260px;">
@@ -1000,6 +1038,7 @@ document.querySelectorAll(".nav-tab-a").forEach(a=>{
 
 function toggleMobMenu(){ D("mob-menu").classList.toggle("open"); }
 function closeMobMenu(){ D("mob-menu").classList.remove("open"); }
+function scrollToHero(){ window.scrollTo({top:0,behavior:"smooth"}); }
 
 // Close HOD dropdown on outside click
 document.addEventListener("click", e=>{
@@ -1033,6 +1072,7 @@ function doLogout() {
   D("btn-admin-open").style.display="block";
   D("btn-log-match").style.display="none";
   D("btn-reg-player").style.display="none";
+  const mob=D("mob-admin-section"); if(mob) mob.style.display="none";
   toast("Logged out","Admin mode disabled.");
   renderAll();
 }
@@ -1040,10 +1080,9 @@ function doLogout() {
 function applyAdminUI() {
   D("admin-pill").style.display = "flex";
   D("btn-admin-open").style.display = "none";
-  D("btn-log-match").style.removeProperty("display");
   D("btn-log-match").style.display = "flex";
-  D("btn-reg-player").style.removeProperty("display");
   D("btn-reg-player").style.display = "flex";
+  const mob=D("mob-admin-section"); if(mob) mob.style.display="block";
 }
 
 // ════════════════════════════════════════════════
@@ -1999,7 +2038,7 @@ Object.assign(window, {
   // Overlays
   openOverlay, closeOverlay,
   // Nav
-  switchTab, toggleMobMenu, closeMobMenu,
+  switchTab, toggleMobMenu, closeMobMenu, scrollToHero,
   // Hero logo
   uploadLogo, applyLogo, restoreLogo,
   // Admin buttons
