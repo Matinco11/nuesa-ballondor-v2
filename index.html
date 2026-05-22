@@ -212,10 +212,10 @@ TABLE / LIST
 .tbl-wrap{background:var(–surface);border:1px solid var(–border);border-radius:4px;overflow:hidden;}
 .tbl-topbar{padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(–border);gap:.7rem;flex-wrap:wrap;}
 .tbl-ttl{font-family:‘Oswald’,sans-serif;font-size:.92rem;font-weight:600;letter-spacing:.04em;}
-.search-box{display:flex;align-items:center;gap:.45rem;background:#fff;border:1px solid var(–border);border-radius:3px;padding:.32rem .65rem;}
-.search-box input{background:none;border:none;outline:none;color:#111;font-family:‘Rajdhani’,sans-serif;font-size:.86rem;width:140px;}
-.search-box input::placeholder{color:#888;}
-.search-box svg{color:#888;}
+.search-box{display:flex;align-items:center;gap:.45rem;background:#ffffff;border:2px solid var(–gold);border-radius:4px;padding:.35rem .7rem;}
+.search-box input{background:none;border:none;outline:none;color:#111111 !important;font-family:‘Rajdhani’,sans-serif;font-size:.9rem;font-weight:600;}
+.search-box input::placeholder{color:#999 !important;}
+.search-box svg{color:#666;flex-shrink:0;}
 .filter-bar{display:flex;gap:.38rem;flex-wrap:wrap;align-items:center;}
 .fbtn{background:var(–dark3);border:1px solid var(–border);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .65rem;border-radius:2px;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .fbtn:hover,.fbtn.active{background:rgba(244,168,0,.1);border-color:var(–gold);color:var(–gold);}
@@ -1923,25 +1923,39 @@ function renderPlayers(){
     return;
   }
 
-  // Group players by level
+  // Group players by DEPARTMENT + LEVEL (each dept×level is its own category)
+  const COMP_MAP={"100L":"Freshers Cup","200L":"Power Cup","300L":"Unity Cup","400L":"IT Cup","500L":"Harmony Cup"};
   let html="";
-  LEVELS.forEach(lvl=>{
-    const lvlPlayers=filtered.filter(p=>(p.level||"100L")===lvl);
-    if(!lvlPlayers.length) return;
-    const compName={"100L":"Freshers Cup","200L":"Power Cup","300L":"Unity Cup","400L":"IT Cup","500L":"Harmony Cup"}[lvl]||"";
-    html+=`
-    <div class="level-section">
-      <div class="level-header">
-        <div class="level-badge">${lvl}</div>
-        <div class="level-info">
-          <span class="level-name">${lvl} Players</span>
-          ${compName?`<span class="level-comp">${compName}</span>`:""}
+  let anyFound=false;
+
+  DEPTS.forEach(dept=>{
+    // If filtering by dept, only show that dept
+    if(playerDeptFilter!=="All" && dept.abbr!==playerDeptFilter) return;
+    LEVELS.forEach(lvl=>{
+      const grpPlayers=filtered.filter(p=>p.dept===dept.abbr&&(p.level||"100L")===lvl);
+      if(!grpPlayers.length) return;
+      anyFound=true;
+      const compName=COMP_MAP[lvl]||"";
+      const deptObj=getDept(dept.abbr);
+      html+=`
+      <div class="level-section">
+        <div class="level-header" style="border-left-color:${deptObj.color}">
+          <div class="level-badge" style="color:${deptObj.color};background:${deptObj.color}18">${dept.abbr} · ${lvl}</div>
+          <div class="level-info">
+            <span class="level-name">${deptObj.name}</span>
+            ${compName?`<span class="level-comp">${compName}</span>`:""}
+          </div>
+          <div class="level-count">${grpPlayers.length} player${grpPlayers.length!==1?"s":""}</div>
         </div>
-        <div class="level-count">${lvlPlayers.length} player${lvlPlayers.length!==1?"s":""}</div>
-      </div>
-      <div class="players-grid">${lvlPlayers.map(p=>buildPlayerCard(p)).join("")}</div>
-    </div>`;
+        <div class="players-grid">${grpPlayers.map(p=>buildPlayerCard(p)).join("")}</div>
+      </div>`;
+    });
   });
+
+  if(!anyFound) html=`<div style="text-align:center;padding:2.5rem;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;">
+    ${players.length===0
+      ?(isAdmin?"No players registered yet — use <strong style='color:var(--gold)'>+ Register Player</strong> to add your first player.":"No players have been registered yet. Check back soon.")
+      :"No players match your search."}</div>`;
 
   D("players-grid").innerHTML=html;
 }
