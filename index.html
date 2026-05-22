@@ -54,13 +54,27 @@ linear-gradient(180deg,var(–dark) 0%,var(–dark2) 100%);}
 background-image:linear-gradient(rgba(244,168,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,168,0,.04) 1px,transparent 1px);
 background-size:55px 55px;
 mask-image:radial-gradient(ellipse 70% 65% at 50% 50%,black,transparent);}
-.hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,168,0,.1);border:1px solid rgba(244,168,0,.3);color:var(–gold);font-family:‘Space Mono’,monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;padding:.38rem 1rem;border-radius:2px;margin-bottom:1.6rem;animation:fadeDown .7s ease both;}
+.hero-content{position:relative;z-index:2;max-width:700px;width:100%;padding:0 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,168,0,.1);border:1px solid rgba(244,168,0,.3);color:var(–gold);font-family:‘Space Mono’,monospace;font-size:clamp(.42rem,.85vw,.58rem);letter-spacing:.12em;text-transform:uppercase;padding:.32rem .65rem;border-radius:2px;margin-bottom:1.1rem;animation:fadeDown .7s ease both;max-width:92vw;flex-wrap:wrap;justify-content:center;}
 .hero-eyebrow::before{content:‘●’;font-size:.45rem;color:var(–green);animation:pulse 2s infinite;}
-.hero-logo{font-family:‘Oswald’,sans-serif;font-size:clamp(2rem,8vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:.01em;
+.hero-logo{
+font-family:‘Oswald’,sans-serif;
+font-size:clamp(1.8rem,6vw,4.5rem);
+font-weight:700;
+line-height:1.1;
+letter-spacing:.01em;
+color:#fff;
+-webkit-text-fill-color:transparent;
 background:linear-gradient(130deg,#fff 0%,var(–gold-light) 38%,var(–gold) 58%,#fff 100%);
-background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-animation:fadeUp .8s .15s ease both,shimmer 5s 1s linear infinite;}
+background-size:200% auto;
+-webkit-background-clip:text;
+background-clip:text;
+animation:fadeUp .8s .15s ease both,shimmer 5s 1s linear infinite;
+margin-bottom:.3rem;
+text-align:center;
+display:block;
+width:100%;
+}
 .hero-div{width:90px;height:2px;background:linear-gradient(90deg,transparent,var(–gold),transparent);margin:1.4rem auto;animation:fadeIn .7s .45s ease both;}
 .logo-slot{width:100px;height:100px;border-radius:50%;border:2px dashed rgba(244,168,0,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.4rem;background:rgba(244,168,0,.04);cursor:pointer;transition:all .3s;animation:fadeUp .8s .35s ease both;overflow:hidden;position:relative;}
 .logo-slot:hover{border-color:var(–gold);background:rgba(244,168,0,.1);}
@@ -89,8 +103,8 @@ nav{position:sticky;top:0;z-index:500;background:rgba(10,12,16,.97);backdrop-fil
 .btn-nav:hover{border-color:var(–gold);color:var(–gold);}
 .btn-nav-red{border-color:rgba(255,71,87,.35);color:var(–red);}
 .btn-nav-red:hover{background:rgba(255,71,87,.1);}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:7px 8px;background:none;border:1px solid var(–border);border-radius:4px;flex-shrink:0;cursor:pointer;position:relative;z-index:501;}
-.hamburger span{display:block;width:20px;height:2px;background:var(–gold);border-radius:1px;transition:all .3s;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:8px 10px;background:rgba(244,168,0,.08);border:1.5px solid rgba(244,168,0,.5);border-radius:4px;flex-shrink:0;cursor:pointer;position:relative;z-index:501;min-width:38px;min-height:38px;}
+.hamburger span{display:block;width:20px;height:2.5px;background:var(–gold);border-radius:2px;transition:all .3s;}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
@@ -138,7 +152,7 @@ background:var(–dark3);border-bottom:1px solid rgba(255,255,255,.04);
 }
 /* ── Floating hamburger on hero ── */
 .hero-hamburger{position:absolute;top:1rem;right:1rem;z-index:10;display:none;flex-direction:column;gap:5px;padding:8px 9px;background:rgba(10,12,16,.85);border:1px solid rgba(244,168,0,.3);border-radius:4px;cursor:pointer;backdrop-filter:blur(10px);}
-.hero-hamburger span{display:block;width:20px;height:2px;background:var(–gold);border-radius:1px;}
+.hero-hamburger span{display:block;width:20px;height:2.5px;background:var(–gold);border-radius:2px;}
 /* ── Back button ── */
 .back-btn{display:inline-flex;align-items:center;gap:.4rem;background:none;border:1px solid var(–border);color:var(–muted);font-family:‘Barlow Condensed’,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:3px;cursor:pointer;transition:all .2s;margin-bottom:1.4rem;}
 .back-btn:hover{border-color:var(–gold);color:var(–gold);}
@@ -147,6 +161,9 @@ background:var(–dark3);border-bottom:1px solid rgba(255,255,255,.04);
 .search-box input::placeholder{color:var(–muted);}
 input,select,textarea{color:#fff;}
 input::placeholder{color:var(–muted);}
+/* Search inputs specifically get dark text on white bg */
+.search-box input{color:#111 !important;background:transparent !important;}
+.search-box input::placeholder{color:#999 !important;}
 .finput,.fselect,.ftextarea{color:#fff !important;}
 .finput::placeholder{color:var(–muted);}
 
@@ -212,8 +229,8 @@ TABLE / LIST
 .tbl-wrap{background:var(–surface);border:1px solid var(–border);border-radius:4px;overflow:hidden;}
 .tbl-topbar{padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(–border);gap:.7rem;flex-wrap:wrap;}
 .tbl-ttl{font-family:‘Oswald’,sans-serif;font-size:.92rem;font-weight:600;letter-spacing:.04em;}
-.search-box{display:flex;align-items:center;gap:.45rem;background:#ffffff;border:2px solid var(–gold);border-radius:4px;padding:.35rem .7rem;}
-.search-box input{background:none;border:none;outline:none;color:#111111 !important;font-family:‘Rajdhani’,sans-serif;font-size:.9rem;font-weight:600;}
+.search-box{display:flex;align-items:center;gap:.45rem;background:#ffffff;border:2px solid var(–gold);border-radius:4px;padding:.35rem .7rem;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.search-box input{background:none;border:none;outline:none;color:#111111 !important;font-family:‘Rajdhani’,sans-serif;font-size:.9rem;font-weight:600;caret-color:#111;}
 .search-box input::placeholder{color:#999 !important;}
 .search-box svg{color:#666;flex-shrink:0;}
 .filter-bar{display:flex;gap:.38rem;flex-wrap:wrap;align-items:center;}
@@ -691,7 +708,7 @@ td,th{padding:.5rem .45rem;}
     <div style="display:flex;gap:.65rem;align-items:center;margin-bottom:1.4rem;flex-wrap:wrap;">
       <div class="search-box">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" placeholder="Search player…" id="player-search" oninput="renderPlayers()" style="width:170px;">
+        <input type="text" placeholder="Search player…" id="player-search" oninput="renderPlayers()" style="width:100%;min-width:100px;">
       </div>
       <div class="filter-bar" id="player-dept-bar"></div>
     </div>
